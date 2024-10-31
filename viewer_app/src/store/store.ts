@@ -15,6 +15,10 @@ class DataStore {
     clearData = () => {
         this.data = [];
     }
+
+    removeElement = (id:number) => {
+        this.data = this.data.filter((item)=>{return item.id != id})
+    }
 }
 
 export default DataStore;

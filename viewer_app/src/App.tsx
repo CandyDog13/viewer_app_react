@@ -14,7 +14,7 @@ type IData = {
 
 export type IItems = {
   name: string,
-  id: string
+  id: number
 }
 
 const App = observer(() => {
@@ -52,6 +52,11 @@ const App = observer(() => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleDeleteClick = (id:number) => {
+    dataStore.removeElement(id);
+    console.log('click');
+  }
+
   return (
       <div
         id='scrollableDiv'
@@ -73,7 +78,7 @@ const App = observer(() => {
           renderItem={(item) => <List.Item key={item.id}>
             <div>
             <h3>{item.name}</h3>
-            <button>
+            <button onClick={()=>handleDeleteClick(item.id)}>
               delete
             </button>
             <button>edit</button>
